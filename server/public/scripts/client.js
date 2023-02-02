@@ -81,26 +81,27 @@ function renderKoala(koala) {
 
     let koalaIsReady = myKoala.ready_to_transfer ? "Ready!" : "Not Ready";
     $("#viewKoalas").append(`
-      <tr data-id=${myKoala.id} data-ready=${myKoala.ready_to_transfer}>
-        <td>
+      <tr class="koalaList" data-id=${myKoala.id} data-ready=${myKoala.ready_to_transfer}>
+        <td class="koalaList">
           ${myKoala.name}
         </td>
-        <td>
+        <td class="koalaList">
           ${myKoala.age}
         </td>
-        <td>
+        <td class="koalaList">
           ${myKoala.gender}
         </td>
-        <td>
+        <td class="koalaList">
           ${koalaIsReady}
         </td>
-        <td>
+        <td class="koalaList">
           <button class=transferBtn>${koalaIsReady}</button>
         </td>  
-        <td>
+        <td class="koalaList">
           ${myKoala.notes}
         </td>
      </tr>
+
    `);
   }
 }
