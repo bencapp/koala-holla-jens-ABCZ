@@ -1,3 +1,7 @@
+html {
+    background-image: linear-gradient(purple, black);
+}
+
 header {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     color: rgb(42, 82, 214);
@@ -5,7 +9,7 @@ header {
 
 h3 {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(112, 112, 112);
+    color: rgb(255, 255, 255);
 }
 
 h2 {
@@ -20,11 +24,24 @@ h2 {
 
 th {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    color: rgb(112, 112, 112);
+    color: rgb(255, 255, 255);
+    font-size: 1.5em;
 }
 
 button {
     background-color: rgb(163, 163, 163) ;
-    color:rgb(200, 213, 255);
+    color:rgb(255, 255, 255);
     font-weight: bold;
+}
+
+
+.koalaList {
+    font-size: 1.25em;
+    background-image: linear-gradient(to left, violet, indigo, blue, green, yellow, orange, red);   -webkit-background-clip: text;
+    color: transparent;
+}
+
+.inputs {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    color: rgb(255, 255, 255);
 }
