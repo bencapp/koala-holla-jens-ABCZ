@@ -58,10 +58,11 @@ function saveKoala() {
 
 function updateReadyToTransfer() {
   let id = $(this).parents("tr").data("id");
+  let readyToSend = $(this).parents("tr").data("ready");
   $.ajax({
     method: "PUT",
     url: `/koala/${id}`,
-    data: { ready_to_transfer: true },
+    data: readyToSend,
   })
     .then(() => {
       getKoala();
