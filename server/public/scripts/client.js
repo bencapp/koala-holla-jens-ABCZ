@@ -63,7 +63,7 @@ function renderKoala(koala) {
     let myKoala = koala[i];
 
     $("#viewKoalas").append(`
-    <tr data-id= ${mykoala.id} data-read=${mykoala.readyForTransfer}>
+    <tr data-id= ${myKoala.id} data-read=${myKoala.readyForTransfer}>
     <td>
       ${myKoala.name}
     </td>
