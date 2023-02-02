@@ -39,7 +39,7 @@ koalaRouter.post("/", (req, res) => {
     newKoala.name,
     newKoala.gender,
     newKoala.age,
-    newKoala.readyToTransfer,
+    newKoala.ready_to_transfer,
     newKoala.notes,
   ];
   pool
@@ -56,13 +56,14 @@ koalaRouter.post("/", (req, res) => {
 // PUT
 koalaRouter.put("/:id", (req, res) => {
   console.log("in router PUT");
+  console.log("putting with PARAMS", req.params);
 
   const queryText = `
         UPDATE koala
         SET ready_to_transfer = $1
         WHERE id = $2
         `;
-  const queryParams = [req.params.readyToTransfer, req.params.id];
+  const queryParams = [req.body.ready_to_transfer, req.params.id];
   console.log("PUTTING with text:", queryText, "params:", queryParams);
 
   pool
