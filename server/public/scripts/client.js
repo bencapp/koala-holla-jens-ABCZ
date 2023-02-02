@@ -63,18 +63,18 @@ function renderKoala(koala) {
     let myKoala = koala[i];
 
     $("#viewKoalas").append(`
-    <tr data-id= ${myKoala.id} data-read=${myKoala.readyForTransfer}>
-    <td>
+    <tr class = 'koalaList' data-id= ${myKoala.id} data-read=${myKoala.readyForTransfer}>
+    <td class = 'koalaList'>
       ${myKoala.name}
     </td>
-    <td>
+    <td class = 'koalaList'>
       ${myKoala.age}
     </td>
-    <td>
+    <td class = 'koalaList'>
       ${myKoala.gender}
-    </td>
+    </td class = 'koalaList'>
       ${myKoala.readyForTransfer}
-    <td>
+    <td class = 'koalaList'>
       ${myKoala.notes}
     </td>
   </tr>
