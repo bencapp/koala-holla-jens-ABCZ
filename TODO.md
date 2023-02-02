@@ -6,12 +6,12 @@ Koala Holla
    - [] Add code to SQL file in project
 
 - [] Server Setup 
-	- [] Install extensions/packages
-    - [] Init NPM  ----- npm init
-    - [] install express
-    - [] install pg ----	npm install pg
-    - [] optional
-        - [] install nodemon
+	- [x] Install extensions/packages
+    - [x] Init NPM  ----- npm init
+    - [x] install express
+    - [x] install pg ----	npm install pg
+    - [x] optional
+        - [x] install nodemon
 
 - [] Functionality --- Base
     - [x] HTML file
