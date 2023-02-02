@@ -55,8 +55,38 @@ koalaRouter.post("/", (req, res) => {
     });
 });
 
-// PUT
+// PUT  
+
+
+
+
+
 
 // DELETE
+koalaRouter.delete ('/:id',(req,res) => {
+let koalaId = req.params.id;
+console.log ('delete request for the id',koalaId);
+
+let sqlQuery = `
+DELETE FROM "koala"
+WHERE "id" = $1;
+`;
+const sqlParams = [
+koalaId,
+];
+pool.query(sqlQuery,sqlParams)
+.then (()=> {
+console.log('koala deleted');
+res.sendStatus(204);
+})
+    .catch((err)=> {
+        console.log(`Error deleting`,err);
+        res.sendStatus(500);
+
+    })
+
+})
+
+
 
 module.exports = koalaRouter;
