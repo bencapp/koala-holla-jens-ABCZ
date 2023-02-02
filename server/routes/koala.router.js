@@ -60,7 +60,7 @@ koalaRouter.put("/:id", (req, res) => {
 
   const queryText = `
         UPDATE koala
-        SET ready_to_transfer = $1
+        SET ready_to_transfer = NOT ready_to_transfer
         WHERE id = $2
         `;
   const queryParams = [req.body.ready_to_transfer, req.params.id];
