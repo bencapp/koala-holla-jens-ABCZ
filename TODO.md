@@ -1,9 +1,9 @@
 Koala Holla
 
-- [] Database Setup
-   - [] create database in positico
-   - [] create sql to populate database with current inventory
-   - [] Add code to SQL file in project
+- [x] Database Setup
+   - [x] create database in positico
+   - [x] create sql to populate database with current inventory
+   - [x] Add code to SQL file in project
 
 - [] Server Setup 
 	- [x] Install extensions/packages
@@ -43,7 +43,7 @@ Koala Holla
                 - [] Takes query text from ajax post.
                     - [] INSERT INTO "koalas" (...) VALUES ...
                     - [] Use array with ($1 $2) to avoid injection
-        - [] PUT -- updates to koalas "Ready for transfer"
+        - [] PUT -- updates to koalas "Ready for transfer" 
             - [] Create query text
                 - [] Takes query text from ajax PUT.
                     - [] UPDATE "koalas" SET "ready_to_transfer" = $1 WHERE "id" = $2
