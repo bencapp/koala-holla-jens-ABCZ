@@ -53,7 +53,7 @@ function saveKoala( newKoala ){
     data: newKoala
   }).then(function (response) {
     console.log('Response from server in post', response);
-    renderKoala();
+    getKoala();
   }).catch((err) => {
     console.log('error in POST', err);
   })
