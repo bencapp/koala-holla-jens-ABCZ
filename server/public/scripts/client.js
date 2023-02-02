@@ -5,7 +5,7 @@ $( document ).ready( function(){
   // Establish Click Listeners
   setupClickListeners()
   // load existing koalas on page load
-  getKoalas();
+  getKoala();
 
 }); // end doc ready
 
@@ -27,11 +27,22 @@ function setupClickListeners() {
   }); 
 }
 
-function getKoalas(){
+function getKoala(){
   console.log( 'in getKoalas' );
-  // ajax call to server to get koalas
+    $.ajax({
+      type : 'GET',
+      url : '/koala'
+    })
+    .then ((response) => {
+      console.log(response);
+      //renderKoala(response);
+    })
+    .catch ((error) => {
+      console.log('error in GET', error);
+    })
+  // ajax call to server to get koala
   
-} // end getKoalas
+} // end getKoala
 
 function saveKoala( newKoala ){
   console.log( 'in saveKoala', newKoala );
@@ -47,3 +58,11 @@ function saveKoala( newKoala ){
     console.log('error in POST', err);
   })
 }
+
+
+//function that renders the koalas
+
+// function renderKoala() {
+//   console.log('in render Koala')
+//   $('#viewKoalas').empty();
+// }
