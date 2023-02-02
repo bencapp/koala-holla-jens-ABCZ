@@ -15,11 +15,11 @@ const pool = new pg.Pool({
 // GET
 
 // POST
-koalaRouter.post("/koala", (req, res) => {
+koalaRouter.post("/", (req, res) => {
   console.log("in router post");
   const newKoala = req.body;
   const queryText = `
-        INSERT INTO "koalas" ("name", "gender", "age", "ready_to_transfer", "notes")
+        INSERT INTO "koala" ("name", "gender", "age", "ready_to_transfer", "notes")
         VALUES ($1, $2, $3, $4, $5)`;
   const queryParams = [
     newKoala.name,
