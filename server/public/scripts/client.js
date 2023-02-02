@@ -10,6 +10,7 @@ $(document).ready(function () {
 
 function setupClickListeners() {
   $("#addButton").on("click", saveKoala);
+  $(".transferBtn").on("click", updateReadyToTransfer);
 }
 
 function getKoala() {
@@ -54,6 +55,22 @@ function saveKoala() {
     });
 }
 
+function updateReadyToTransfer() {
+  let id = $(this).parents('tr').data('id')
+  $.ajax({
+    method: 'PUT',
+    url: `/koala/${id}`,
+    data: {readyForTransfer: true}
+  })
+  .then(() => {
+    getKoala();
+  })
+  .catch((err) => {
+      console.log('PUT failed');
+  })
+}
+
+
 //function that renders the koalas
 function renderKoala(koala) {
   console.log("in render Koala");
@@ -62,6 +79,7 @@ function renderKoala(koala) {
   for (let i = 0; i < koala.length; i += 1) {
     let myKoala = koala[i];
 
+    let koalaIsReady = koala.readyForTransfer ? 'Ready!' : 'Not Ready';
     $("#viewKoalas").append(`
     <tr data-id= ${myKoala.id} data-read=${myKoala.readyForTransfer}>
     <td>
@@ -73,7 +91,12 @@ function renderKoala(koala) {
     <td>
       ${myKoala.gender}
     </td>
+    <td>
       ${myKoala.readyForTransfer}
+    </td>
+    <td>
+      <button class=transferBtn>${koalaIsReady}</button>
+    </td>  
     <td>
       ${myKoala.notes}
     </td>
