@@ -35,7 +35,7 @@ function getKoala(){
     })
     .then ((response) => {
       console.log(response);
-      //renderKoala(response);
+      renderKoala(response);
     })
     .catch ((error) => {
       console.log('error in GET', error);
@@ -61,8 +61,29 @@ function saveKoala( newKoala ){
 
 
 //function that renders the koalas
+function renderKoala(koala) {
+   console.log('in render Koala')
+   $('#viewKoalas').empty();
 
-// function renderKoala() {
-//   console.log('in render Koala')
-//   $('#viewKoalas').empty();
-// }
+   for(let i = 0; i < koala.length; i += 1) {
+    let myKoala = koala[i];
+
+   $('#viewKoalas').append(`
+    <tr data-id= ${mykoala.id} data-read=${mykoala.readyForTransfer}>
+    <td>
+      ${myKoala.name}
+    </td>
+    <td>
+      ${myKoala.age}
+    </td>
+    <td>
+      ${myKoala.gender}
+    </td>
+      ${myKoala.readyForTransfer}
+    <td>
+      ${myKoala.notes}
+    </td>
+  </tr>
+   `);
+   }
+}
