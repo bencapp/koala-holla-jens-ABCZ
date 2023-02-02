@@ -21,7 +21,6 @@ koalaRouter.get("/", (req, res) => {
   pool
     .query(sqlQuery)
     .then((dbRes) => {
-      console.log("Database Works!!!");
       res.send(dbRes.rows);
     })
     .catch((err) => {
@@ -32,7 +31,6 @@ koalaRouter.get("/", (req, res) => {
 
 // POST
 koalaRouter.post("/", (req, res) => {
-  console.log("in router post");
   const newKoala = req.body;
   const queryText = `
         INSERT INTO "koala" ("name", "gender", "age", "ready_to_transfer", "notes")
@@ -46,7 +44,7 @@ koalaRouter.post("/", (req, res) => {
   ];
   pool
     .query(queryText, queryParams)
-    .then((dbResponse) => {
+    .then(() => {
       res.sendStatus(204); // completed successfully
     })
     .catch((err) => {
@@ -56,6 +54,26 @@ koalaRouter.post("/", (req, res) => {
 });
 
 // PUT
+koalaRouter.put("/:id", (req, res) => {
+  console.log("in router PUT");
+
+  const queryText = `
+        UPDATE koala
+        SET ready_to_transfer = $1
+        WHERE id = $2
+        `;
+  const queryParams = [req.params.readyToTransfer, req.params.id];
+  console.log("PUTTING with text:", queryText, "params:", queryParams);
+
+  pool
+    .query(queryText, queryParams)
+    .then(() => {
+      res.sendStatus(204);
+    })
+    .catch((err) => {
+      console.log("error in server PUT:", err);
+    });
+});
 
 // DELETE
 
