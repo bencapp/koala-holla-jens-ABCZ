@@ -61,9 +61,9 @@ koalaRouter.put("/:id", (req, res) => {
   const queryText = `
         UPDATE koala
         SET ready_to_transfer = NOT ready_to_transfer
-        WHERE id = $2
+        WHERE id = $1
         `;
-  const queryParams = [req.body.ready_to_transfer, req.params.id];
+  const queryParams = [req.params.id];
   console.log("PUTTING with text:", queryText, "params:", queryParams);
 
   pool
