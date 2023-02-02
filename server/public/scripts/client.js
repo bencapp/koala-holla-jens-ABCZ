@@ -11,6 +11,7 @@ $(document).ready(function () {
 function setupClickListeners() {
   $("#addButton").on("click", saveKoala);
   $(document).on("click", ".transferBtn", updateReadyToTransfer);
+  $(document).on("click", ".deleteBtn", onDelete);
 }
 
 function getKoala() {
@@ -70,6 +71,23 @@ function updateReadyToTransfer() {
     });
 }
 
+//on Delete
+function onDelete () {
+  console.log('In delete');
+  let id = $(this).parents('tr').data('id');
+
+  $.ajax({
+    method: 'DELETE',
+    url: `/koala/${id}`
+  })
+  .then(() => {
+    getKoala();
+  })
+  .catch((error) => {
+    console.log('DELETE koala failed to reach server', error);
+  })
+}
+
 //function that renders the koalas
 function renderKoala(koala) {
   console.log("in render Koala");
@@ -100,6 +118,9 @@ function renderKoala(koala) {
         <td class="koalaList">
           ${myKoala.notes}
         </td>
+        <td>
+        <button class="deleteBtn">Delete</button>
+      </td>
      </tr>
 
    `);
