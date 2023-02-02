@@ -1,74 +1,68 @@
-console.log( 'js' );
+console.log("js");
 
-$( document ).ready( function(){
-  console.log( 'JQ' );
+$(document).ready(function () {
+  console.log("JQ");
   // Establish Click Listeners
-  setupClickListeners()
+  setupClickListeners();
   // load existing koalas on page load
   getKoala();
-
 }); // end doc ready
 
 function setupClickListeners() {
-  $( '#addButton' ).on( 'click', function(){
-    console.log( 'in addButton on click' );
-    // get user input and put in an object
-    // NOT WORKING YET :(
-    // using a test object
-    let koalaToSend = {
-      name: 'testName',
-      age: 'testName',
-      gender: 'testName',
-      readyForTransfer: 'testName',
-      notes: 'testName',
-    };
-    // call saveKoala with the new obejct
-    saveKoala( koalaToSend );
-  }); 
+  $("#addButton").on("click", saveKoala);
 }
 
-function getKoala(){
-  console.log( 'in getKoalas' );
-    $.ajax({
-      type : 'GET',
-      url : '/koala'
-    })
-    .then ((response) => {
+function getKoala() {
+  console.log("in getKoalas");
+  $.ajax({
+    type: "GET",
+    url: "/koala",
+  })
+    .then((response) => {
       console.log(response);
       renderKoala(response);
     })
-    .catch ((error) => {
-      console.log('error in GET', error);
-    })
+    .catch((error) => {
+      console.log("error in GET", error);
+    });
   // ajax call to server to get koala
-  
 } // end getKoala
 
-function saveKoala( newKoala ){
-  console.log( 'in saveKoala', newKoala );
+function saveKoala() {
+  // create new koala from input fields
+  const koalaToSend = {
+    name: $("#nameIn").val(),
+    age: $("#ageIn").val(),
+    gender: $("#genderIn").val(),
+    readyForTransfer: $("#readyForTransferIn").val(),
+    notes: $("#notesIn").val(),
+  };
+  console.log("in saveKoala, POSTING", koalaToSend);
+
   // ajax call to server to get koalas
   $.ajax({
-    type: 'POST',
-    url: '/koala',
-    data: newKoala
-  }).then(function (response) {
-    console.log('Response from server in post', response);
-    getKoala();
-  }).catch((err) => {
-    console.log('error in POST', err);
+    type: "POST",
+    url: "/koala",
+    data: koalaToSend,
   })
+    .then(function (response) {
+      console.log("Response from server in post", response);
+      getKoala();
+    })
+    .catch((err) => {
+      console.log("error in POST", err);
+    });
 }
-
 
 //function that renders the koalas
 function renderKoala(koala) {
-   console.log('in render Koala')
-   $('#viewKoalas').empty();
+  console.log("in render Koala");
+  $("#viewKoalas").empty();
 
-   for(let i = 0; i < koala.length; i += 1) {
+  for (let i = 0; i < koala.length; i += 1) {
     let myKoala = koala[i];
 
-   $('#viewKoalas').append(`
+    $("#viewKoalas").append(`
     <tr data-id= ${mykoala.id} data-read=${mykoala.readyForTransfer}>
     <td>
       ${myKoala.name}
@@ -85,5 +79,5 @@ function renderKoala(koala) {
     </td>
   </tr>
    `);
-   }
+  }
 }
