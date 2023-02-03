@@ -1,5 +1,10 @@
 console.log("js");
 
+//Gloabl Variables
+localKoalas = [];
+
+
+
 $(document).ready(function () {
   console.log("JQ");
   // Establish Click Listeners
@@ -12,6 +17,9 @@ function setupClickListeners() {
   $("#addButton").on("click", saveKoala);
   $(document).on("click", ".transferBtn", updateReadyToTransfer);
   $(document).on("click", ".deleteBtn", onDelete);
+
+  $(document).on("click", ".filter", filterKoala);  
+
 }
 
 function getKoala() {
@@ -22,6 +30,8 @@ function getKoala() {
   })
     .then((response) => {
       console.log(response);
+      localKoalas = response;
+      console.log('Client side koalas', localKoalas);
       renderKoala(response);
     })
     .catch((error) => {
@@ -87,6 +97,28 @@ function onDelete () {
     console.log('DELETE koala failed to reach server', error);
   })
 }
+
+// filter Koala
+function filterKoala() {
+  
+ console.log('Koala Select', $('select option:selected').val());
+ console.log('filtertext', $('#filterText').val());
+  
+ let koalaSelect = $('select option:selected').val();
+ let filterText = $('#filterText').val()
+ 
+
+  
+const result = localKoalas.filter(localKoalas => localKoalas === koalaSelect);
+
+
+
+
+}
+
+
+
+
 
 //function that renders the koalas
 function renderKoala(koala) {
